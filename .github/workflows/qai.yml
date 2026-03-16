@@ -16,3 +16,4 @@ jobs:
         if: always()
         with:
           junit-path: 'test-results/results.xml'
+          trace-path: 'test-results/**/*.zip'
