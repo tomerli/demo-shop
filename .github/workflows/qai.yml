@@ -4,16 +4,31 @@ on:
   pull_request:
 
 jobs:
-  qai:
+  test:
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
+      contents: read
+
     steps:
       - uses: actions/checkout@v4
 
-      - name: QAI Test Intelligence
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests
+        run: npm test
+        continue-on-error: true   # let QAI Agent report failures, don't stop the workflow
+
+      - name: QAI Agent
         uses: useqai/qai-agent@v1
         if: always()
         with:
           junit-path: 'test-results/results.xml'
           trace-path: 'test-results/**/*.zip'
+          qai-url: https://ingest.useqai.dev
+          qai-api-key: ${{ secrets.QAI_API_KEY }}
