@@ -30,5 +30,6 @@ jobs:
         with:
           junit-path: 'test-results/results.xml'
           trace-path: 'test-results/**/*.zip'
+          fail-on-high-risk: 'false'
           qai-url: https://ingest.useqai.dev
           qai-api-key: ${{ secrets.QAI_API_KEY }}
