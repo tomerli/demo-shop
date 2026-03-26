@@ -5,9 +5,13 @@ import { dirname, join } from 'path';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
-const PRODUCT_URL  = process.env.PRODUCT_CATALOG_URL ?? 'http://localhost:3001';
-const CART_URL     = process.env.CART_URL             ?? 'http://localhost:3002';
-const CHECKOUT_URL = process.env.CHECKOUT_URL         ?? 'http://localhost:8080';
+function withProtocol(url) {
+  return url.startsWith('http') ? url : `https://${url}`;
+}
+
+const PRODUCT_URL  = withProtocol(process.env.PRODUCT_CATALOG_URL ?? 'http://localhost:3001');
+const CART_URL     = withProtocol(process.env.CART_URL             ?? 'http://localhost:3002');
+const CHECKOUT_URL = withProtocol(process.env.CHECKOUT_URL         ?? 'http://localhost:8080');
 const PORT         = process.env.PORT                 ?? 3000;
 const isProd       = process.env.NODE_ENV === 'production';
 
