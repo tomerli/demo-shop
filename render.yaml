@@ -3,6 +3,7 @@ services:
   - type: web
     name: demoshop-frontend
     runtime: node
+    plan: free
     rootDir: frontend
     buildCommand: npm install && npm run build
     startCommand: NODE_ENV=production node server.js
@@ -29,6 +30,7 @@ services:
   - type: web
     name: demoshop-catalog
     runtime: node
+    plan: free
     rootDir: product-catalog-svc
     buildCommand: npm install
     startCommand: node index.js
@@ -42,6 +44,7 @@ services:
   - type: web
     name: demoshop-cart
     runtime: node
+    plan: free
     rootDir: cart-svc
     buildCommand: npm install
     startCommand: node index.js
@@ -55,6 +58,7 @@ services:
   - type: web
     name: demoshop-payment
     runtime: node
+    plan: free
     rootDir: payment-svc
     buildCommand: npm install
     startCommand: node index.js
@@ -68,6 +72,7 @@ services:
   - type: web
     name: demoshop-checkout
     runtime: docker
+    plan: free
     rootDir: checkout-svc
     dockerfilePath: ./Dockerfile
     envVars:
