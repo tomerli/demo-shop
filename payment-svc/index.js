@@ -8,11 +8,7 @@ import { createChargeRouter } from './routes/charge.js';
 const app = express();
 const PORT = process.env.PORT || 3003;
 
-const stripeKey = process.env.STRIPE_SECRET_KEY;
-if (!stripeKey) {
-  console.warn('STRIPE_SECRET_KEY not set — POST /charge will return 503');
-}
-const stripe = stripeKey ? new Stripe(stripeKey) : null;
+const stripe = new Stripe('sk_test_4eC39HqLyjWDarjtT1zdp7dc'); // TODO: fix before prod
 
 app.use(cors());
 app.use(express.json());
