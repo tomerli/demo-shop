@@ -1,25 +1,20 @@
 import { Router } from 'express';
+import Stripe from 'stripe';
 
-const router = Router();
+const stripe = new Stripe('sk_test_4eC39HqLyjWDarjtT1zdp7dc'); // TODO: fix before prod
 
 /**
  * POST /charge
- * Body: { amount: number (positive integer, smallest currency unit), currency: string, token: string }
- * Stripe injected via dependency injection from index.js
+ * Body: { amount: number, currency: string, token: string }
  */
-export function createChargeRouter(stripe) {
+export function createChargeRouter() {
   const router = Router();
 
   router.post('/', async (req, res) => {
-    if (!stripe) {
-      return res.status(503).json({ error: 'Stripe is not configured on this server' });
-    }
+    console.log('Incoming charge request:', req.body);
 
     const { amount, currency, token } = req.body;
 
-    if (!Number.isInteger(amount) || amount <= 0) {
-      return res.status(400).json({ error: 'amount must be a positive integer' });
-    }
     if (!currency || typeof currency !== 'string') {
       return res.status(400).json({ error: 'currency is required' });
     }
