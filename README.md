@@ -1,4 +1,4 @@
-# DemoShop — Microservices Demo
+# DemoShop — Microservices Dem
 
 A simplified e-commerce microservices demo inspired by [GCP Online Boutique](https://github.com/GoogleCloudPlatform/microservices-demo).
 
