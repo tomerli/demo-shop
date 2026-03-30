@@ -11,15 +11,14 @@ export function createChargeRouter(stripe) {
   const router = Router();
 
   router.post('/', async (req, res) => {
+    console.log("Received charge request:", req.body);
     if (!stripe) {
       return res.status(503).json({ error: 'Stripe is not configured on this server' });
     }
 
     const { amount, currency, token } = req.body;
 
-    if (!Number.isInteger(amount) || amount <= 0) {
-      return res.status(400).json({ error: 'amount must be a positive integer' });
-    }
+
     if (!currency || typeof currency !== 'string') {
       return res.status(400).json({ error: 'currency is required' });
     }
