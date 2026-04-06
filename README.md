@@ -101,3 +101,4 @@ The repo includes a `render.yaml` Blueprint that defines all 5 services. To depl
 5. Enter email + shipping address → Place Order
 6. See order confirmation with transaction ID
 7. View past orders under **My Orders**
+
