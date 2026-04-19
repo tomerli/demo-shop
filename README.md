@@ -118,3 +118,4 @@ All 5 services redeploy automatically on every push to `main`.
 5. Enter email + shipping address → Place Order
 6. See order confirmation with transaction ID
 7. View past orders under **My Orders**
+
